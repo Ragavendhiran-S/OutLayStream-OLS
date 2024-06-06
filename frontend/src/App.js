@@ -15,6 +15,8 @@ function App() {
   const global = useGlobalContext()
   console.log(global);
 
+
+  
   const displayData = () => {
     switch(active){
       case 1:
