@@ -10,7 +10,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/expenses") // Updated to include versioning
+@RequestMapping("/api/v1/expense") // Updated to include versioning
 public class ExpenseController {
 
     private final ExpenseService expenseService;

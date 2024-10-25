@@ -13,7 +13,7 @@ import java.time.Instant;
 @Entity
 @NoArgsConstructor
 @Data
-@Table(name = "expense")
+@Table(name = "expenses")
 public class Expense {
     @Id
     private Long id;
@@ -29,5 +29,5 @@ public class Expense {
 
     @JsonIgnore
     @ManyToOne
-    private User user;
+    private Users user;
 }

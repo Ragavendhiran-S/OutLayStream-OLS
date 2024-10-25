@@ -15,6 +15,9 @@ import java.util.List;
 public class ExpenseService {
 
     ExpenseRepository expenseRepository;
+    public ExpenseService(ExpenseRepository expenseRepository) {
+        this.expenseRepository = expenseRepository;
+    }
 
     public List<Expense> allExpenses() {
         return expenseRepository.findAll();
