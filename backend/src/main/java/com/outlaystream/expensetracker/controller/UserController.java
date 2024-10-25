@@ -2,8 +2,9 @@ package com.outlaystream.expensetracker.controller;
 
 import com.outlaystream.expensetracker.model.Users;
 import com.outlaystream.expensetracker.repository.UserRepository;
-import com.outlaystream.expensetracker.service.UserService;
+import com.outlaystream.expensetracker.service.MyUserDetailsService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,9 +17,9 @@ public class UserController {
 
 
     private final UserRepository userRepository;
-    private final UserService userService;
+    private final MyUserDetailsService userService;
 
-    public UserController(UserRepository userRepository, UserService userService) {
+    public UserController(UserRepository userRepository, MyUserDetailsService userService) {
         this.userRepository = userRepository;
         this.userService = userService;
     }
@@ -35,7 +36,13 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(@RequestBody Users user) {
+        try {
+            userService.loadUserByUsername(user.getUsername());
+            return "Login success";
+        }
+        catch(UsernameNotFoundException exception) {
+            return "Login failed";
+        }
 
-        return "Success";
     }
 }

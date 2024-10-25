@@ -25,13 +25,12 @@ public class SecurityConfig {
 
         return http.csrf(customizer -> customizer.disable()).
                 authorizeHttpRequests(request -> {
-                    request.requestMatchers("register","login").permitAll();
+                    request.requestMatchers("register", "login").permitAll();
                     request.anyRequest().authenticated();
                 }).
                 httpBasic(Customizer.withDefaults()).
                 sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).build();
     }
-
 
     @Bean
     public AuthenticationProvider authenticationProvider() {

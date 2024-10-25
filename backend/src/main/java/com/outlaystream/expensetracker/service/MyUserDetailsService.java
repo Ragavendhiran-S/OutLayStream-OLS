@@ -10,11 +10,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService implements UserDetailsService {
+public class MyUserDetailsService implements UserDetailsService {
     //    @Autowired
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+
+    public MyUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -37,4 +38,12 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
         return user;
     }
+
+//    public Users isRegistered(Users user) {
+//        Users present = userRepository.findByUsername(user.getUsername());
+//        if(present == null) {
+//            return
+//        }
+//    }
+
 }
